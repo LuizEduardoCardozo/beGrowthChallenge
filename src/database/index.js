@@ -10,9 +10,10 @@ try {
 }
 
 const Market = require('../models/Market');
+const User = require('../models/Users');
 
 
 Market.init(connection);
-
+User.init(connection);
 
 module.exports = connection;
