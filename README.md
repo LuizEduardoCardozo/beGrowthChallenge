@@ -22,19 +22,25 @@
 # Routes
 
 POST - /market/ - Register a new market
+
 GET  - /market/ - Search for market into a specific location (need authentication)
+
 POST - /market/login - Authenticate the market, this route will return a jwt.
 
+
 POST - /user/ - Register a new user
+
 POST - /user/login - Authenticate the user, this route will return a jwt.
 
+
 POST - /product/ - Register a new product (needs a market jwt)
+
 GET - /product/ - Search for products into a specific location (needs a user jwt)
 
 ### How to register a market?
 
 Pass a json with the information to the route
-
+```
 {
     "name":<the market name>,
     "email:<the market email>,
@@ -43,18 +49,15 @@ Pass a json with the information to the route
     "lat":<the market location latitude>
     "long":<the market location longitude> # read the to-do section
 }
-
+```
 ### how to register a user?
 
 Pass a json with the information to the route
 
 {
     "name":<the user name>,
-    
     "email:<the user email>,
-    
     "password":<a password for login>,
-    
     "local":<the user location>
 }
 
