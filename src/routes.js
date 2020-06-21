@@ -15,7 +15,7 @@ const productController = require('./controllers/productController');
     from him.
 
     -> /market/login
-    Thist route will be to auth a market. It returns a jwt token, containing his
+    This route will be to auth a market. It returns a jwt token, containing his
     id
 
 */
@@ -29,7 +29,7 @@ router.post('/market/login', marketController.login);
     The post route will be to register a new user to the database, 
 
     -> /user/login
-    Thist route will be to auth a user. It returns a jwt token, containing his
+    This route will be to auth a user. It returns a jwt token, containing his
     id
 */
 
@@ -45,6 +45,7 @@ router.post('/user/login', userController.login);
     The GET ROUTE will return all the products in a location. The user needs to be 
     authenticated to do it because it used his location to find the nearest markets 
     from him.
+    It returns first the products which have the bigger expiration date
 
 */
 

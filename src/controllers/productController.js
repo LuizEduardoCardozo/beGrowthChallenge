@@ -38,7 +38,7 @@ module.exports = {
         
         const { local } = await user.findOne({ where: {id} })
 
-        const fProduct = await product.findAll( { where: { location: local }});
+        const fProduct = await product.findAll( { where: { location: local }, order: [['val', 'DESC']]});
         
         return res.json(fProduct);
 
