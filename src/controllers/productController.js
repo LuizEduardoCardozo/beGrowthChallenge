@@ -15,14 +15,14 @@ module.exports = {
         const valDate = Date.parse(val);
         const now = Date.now();
         
-        if(valDate < now) return res.status(300).json({err: "Rotten product"});
+        if(valDate < now) return res.status(300).json({ err: "Rotten product" });
 
         const market_id = req.token_id;
         
         const _market = await market.findOne( { where: {id: market_id} });
         const location = _market.local;
 
-        const newProduct = await product.create({sku, qtd, val ,location, market_id,});
+        const newProduct = await product.create({ sku, qtd, val ,location, market_id, });
 
         return res.send(newProduct);
 
@@ -32,15 +32,18 @@ module.exports = {
 
         const userToken = req.header('auth-token');
 
-        if(!userToken) return res.status(401).json({err: 'No token provided!'});
+        if(!userToken) return res.status(401).json({ err: 'No token provided!' });
 
         const { id } = await jwt.decode(userToken, 'jwt_token');
         
         const { local } = await user.findOne({ where: {id} })
 
-        const fProduct = await product.findAll( { where: { location: local }, order: [['val', 'DESC']]});
+        const products = await product.findAll( { 
+            where: { location: local }, 
+            order: [ ['val', 'DESC'] ],
+        });
         
-        return res.json(fProduct);
+        return res.json(products);
 
     },
 
