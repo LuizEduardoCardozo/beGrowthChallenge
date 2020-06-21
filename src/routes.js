@@ -19,6 +19,5 @@ router.post('/user/login', userController.login);
 
 router.post('/product/', auth,  productController.create);
 router.get('/product/', auth, productController.index);
-router.get('/product/:location', productController.index);
 
 module.exports = router;
