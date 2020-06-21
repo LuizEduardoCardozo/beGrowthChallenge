@@ -50,8 +50,11 @@ Pass a json with the information to the route
 
 {
     "name":<the user name>,
+    
     "email:<the user email>,
+    
     "password":<a password for login>,
+    
     "local":<the user location>
 }
 
