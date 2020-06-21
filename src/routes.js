@@ -15,8 +15,10 @@ router.post('/market/login', marketController.login);
 
 router.post('/user/', userController.create);
 router.get('/user/', userController.index);
+router.post('/user/login', userController.login);
 
 router.post('/product/', auth,  productController.create);
-router.get('/product/', productController.index);
+router.get('/product/', auth, productController.index);
+router.get('/product/:location', productController.index);
 
 module.exports = router;

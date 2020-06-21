@@ -1,5 +1,8 @@
+const jwt = require('jsonwebtoken');
+
 const product = require('../models/Product');
 const market = require('../models/Market');
+const user = require('../models/Users');
 
 module.exports = {
 
@@ -27,7 +30,16 @@ module.exports = {
 
     async index ( req, res ) {
 
-        const fProduct = await product.findAll({});
+        const userToken = req.header('auth-token');
+
+        if(!userToken) return res.status(401).json({err: 'No token provided!'});
+
+        const { id } = await jwt.decode(userToken, 'jwt_token');
+        
+        const { local } = await user.findOne({ where: {id} })
+
+        const fProduct = await product.findAll( { where: { location: local }});
+        
         return res.json(fProduct);
 
     },
