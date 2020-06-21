@@ -102,7 +102,9 @@ On send, the request will return all of the products capable of the user
 collect at your location, returning first products with a critical expiration date.
 
 Hey, wait! In no time did I tell my location!
+
 Yes, padawan! It's for this reason the route needs an authentication.
+
 The jwt contains your user id. So, when you do the request, the route will
 know your id, knowing your perfil beacuse of that.
 Your location will be automatically passed to the route.
@@ -110,10 +112,15 @@ Your location will be automatically passed to the route.
 # What was used?
 
 bcryptjs -> to deal with hashes;
+
 config -> used to center all the configs into a single file;
+
 express -> web frameword;
+
 jsonwebtoken -> To create the jwt auth;
+
 pg -> PostGres, for database;
+
 sequelize -> ORM to deal with databases;
 
 # to-do
