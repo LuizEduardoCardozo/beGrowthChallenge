@@ -5,7 +5,11 @@ module.exports = {
     async create ( req, res ) {
 
         const { name,password,local,lat,long, } = req.body;
-        const newMarket = await market.create({name,password,local,lat,long});
+
+        const salt = await bcrypt.genSalt(10);
+        const hashPassword = await bcrypt.hash(password, salt);
+
+        const newMarket = await market.create({name,password: hashPassword,local,lat,long});
         return res.send(newMarket);
 
     },
