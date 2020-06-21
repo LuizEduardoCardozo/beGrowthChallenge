@@ -5,7 +5,6 @@ module.exports = {
     async create ( req, res ) {
 
         const { sku, qtd, val ,location, market_id, } = req.body;
-        console.log(typeof val);
         const newProduct = await product.create({sku, qtd, val ,location, market_id,});
         return res.send(newProduct);
 
