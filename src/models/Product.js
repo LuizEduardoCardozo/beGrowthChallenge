@@ -6,7 +6,7 @@ class Product extends Model {
         super.init({
             sku: DataTypes.STRING,
             qtd: DataTypes.INTEGER,
-            val: DataTypes.INTEGER,
+            val: DataTypes.DATE,
             location: DataTypes.STRING,
             market_id: DataTypes.INTEGER,
         }, {

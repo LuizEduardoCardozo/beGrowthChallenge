@@ -16,7 +16,7 @@ module.exports = {
           type: Sequelize.INTEGER,
         },
         val: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.DATE,
         },
         location: {
           type: Sequelize.STRING,
