@@ -40,7 +40,7 @@ GET - /product/ - Search for products into a specific location (needs a user jwt
 ### How to register a market?
 
 Pass a json with the information to the route
-```
+```json
 {
     "name":<the market name>,
     "email:<the market email>,
@@ -53,36 +53,37 @@ Pass a json with the information to the route
 ### how to register a user?
 
 Pass a json with the information to the route
-
+```json
 {
     "name":<the user name>,
     "email:<the user email>,
     "password":<a password for login>,
     "local":<the user location>
 }
-
+```
 ### how to register a new product?
 
 First of all, you need to login with a market:
 Pass the json bellow to market login route
-
+```json
 {
     "email":<the market email>,
     "password":<the market password>,
 }
-
+```
 The login route will return a jwt, copy it.
 
 On "register a new product" request, create an "auth-token"
 field on the header, and feed it with the jwt.
 
 On request body, pass this json:
+```json
 {
     sku: <product sku>,
     qtd: <quantity>,
     val: [ <year>, <month>, <day> ] 
 }
-
+```
 the expiration date (val) needs to be parsed, and needs to be in string format
 
 If successful, you will receive a 200 status response.
@@ -91,12 +92,12 @@ If successful, you will receive a 200 status response.
 
 First, you will need to login as a user.
 Request the following json to user-login route:
-
+```json
 {
     email:<user email>,
     password:<user password>,
 }
-
+```
 The request will returns a jwt, copy then
 
 On "consult products" request, create an "auth-token".
