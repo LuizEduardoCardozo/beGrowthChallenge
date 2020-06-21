@@ -11,9 +11,12 @@ try {
 
 const Market = require('../models/Market');
 const User = require('../models/Users');
+const Products = require('../models/Product');
 
 
 Market.init(connection);
 User.init(connection);
+Products.init(connection);
+
 
 module.exports = connection;
