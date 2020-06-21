@@ -21,14 +21,6 @@ module.exports = {
 
     },
 
-
-    async index ( req, res ) {
-
-        const fUser = await user.findAll({});
-        return res.json(fUser);
-
-    },
-
     async login ( req, res ) {
 
         const { email, password } = req.body;

@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 
 const market = require('../models/Market');
+const user = require('../models/Users');
 
 module.exports = {
 
@@ -20,19 +21,13 @@ module.exports = {
 
     async index ( req, res ) {
 
-        const { location } = req.params;
+        const userToken = req.header('auth-token');
+        const { id } = await jwt.decode(userToken, 'jwt_secret');
 
-        if( location === undefined ) {
+        const { local } = await user.findOne({ where: {id} });
 
-            const markets = await market.findAll();
-            return res.json(markets);
-
-        }else {
-
-            const markets = await market.findAll({ where: { local: location }});
-            return res.json(markets);
-
-        }
+        const markets = await market.findAll({ where: { local }});
+        return res.json(markets);
 
     },
 
